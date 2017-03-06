@@ -19,7 +19,7 @@ import java.io.*;
 
 /* todo quando EOF */
 %eof{
-	if(isComentario) System.out.println("Comentário aberto e não fechado!");
+	if(isComentario) System.out.println("Comentario aberto e nao fechado!");
 	LexicalTable.writeTable();
 	LexicalTable.printTable();
 %eof}
@@ -33,13 +33,13 @@ EspacoEmBranco = {QuebraDeLinha} | [ \t\f]
 
 /* Tipos de Simbolos */
 
-PalavraChave = ["program"|"var"|"integer"|"if"|"then"|"else"|"end"|"real"|"while"|"not"|"do"|"procedure"|"boolean"|"begin"]
+/*PalavraChave = ["program"|"var"|"integer"|"if"|"then"|"else"|"end"|"real"|"while"|"not"|"do"|"procedure"|"boolean"|"begin"]*/
 Identificador = [:jletter:][:jletterdigit:]*
 NumInteiro = [0-9]+
 NumReal = [0-9]+ \. [0-9]*
 Delimitador = [.|;|:|,|(|)]
 Atribuicao = ":="
-OPRelacionais = [=|<|>|<=|>=|<|>]
+OPRelacionais = [=|<|>|<|>] | "<="|">="
 OPAditivos = [-|+|"or"]
 OPMultiplicativos = [*|/|"and"]
 
@@ -50,12 +50,80 @@ OPMultiplicativos = [*|/|"and"]
 
 
 <YYINITIAL> {
-/* Palavras chave*/
 
-	{PalavraChave}	{
-						lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
-						yybegin(PALAVRA_CHAVE);
-					}
+/* Palavras chave*/
+	"program"	{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"var"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"integer"	{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+				
+	"if"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+				
+	"then"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"else"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"end"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"real"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"while"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+				
+	"not"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"do"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"procedure"	{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"boolean"	{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+	"begin"		{
+					lexicalTable.addToken(yytext(), "Palavra Chave" , (int)yyline+1);
+					yybegin(PALAVRA_CHAVE);
+				}
+	
+
+/* Fim Palavras chave */
 	
 	{Identificador}	{ 
 						lexicalTable.addToken(yytext(), "Identificador" , (int)yyline+1);
@@ -105,7 +173,7 @@ OPMultiplicativos = [*|/|"and"]
 		}
 	
 	[^] {
-			System.out.println("Simbolo Inválido: " + yytext() + " - linha: " + String.valueOf(yyline+1));
+			System.out.println("Simbolo Invalido: " + yytext() + " - linha: " + String.valueOf(yyline+1));
 		}
 }
 
@@ -124,7 +192,7 @@ OPMultiplicativos = [*|/|"and"]
 		}
 	
 	[^] {
-			System.out.println("Simbolo Inválido: " + yytext() + " - linha: " +  (int)yyline+1);
+			System.out.println("Simbolo Invalido: " + yytext() + " - linha: " +  (int)yyline+1);
 		}
 }
 
@@ -164,7 +232,7 @@ OPMultiplicativos = [*|/|"and"]
 		}
 	
 	[^] {
-			System.out.println("Simbolo Inválido: " + yytext() + " - linha: " + String.valueOf(yyline+1));
+			System.out.println("Simbolo Invalido: " + yytext() + " - linha: " + String.valueOf(yyline+1));
 		}
 
 }
@@ -205,7 +273,7 @@ OPMultiplicativos = [*|/|"and"]
 		}
 	
 	[^] {
-			System.out.println("Simbolo Inválido: + yytext() " + " - linha: " + String.valueOf(yyline+1));
+			System.out.println("Simbolo Invalido: + yytext() " + " - linha: " + String.valueOf(yyline+1));
 		}
 	
 }
