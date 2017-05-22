@@ -2,6 +2,9 @@
 
 /* Imports */
 import java.lang.String;
+
+import Lexical.LexicalTable;
+
 import java.io.*;
 
 

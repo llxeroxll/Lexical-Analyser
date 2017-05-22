@@ -1,3 +1,4 @@
+package Lexical;
 
 public class Token {
 	private String Identificador;

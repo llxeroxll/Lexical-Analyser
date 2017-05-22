@@ -33,7 +33,7 @@ EspacoEmBranco = {QuebraDeLinha} | [ \t\f]
 
 /* Tipos de Simbolos */
 
-/*PalavraChave = ["program"|"var"|"integer"|"if"|"then"|"else"|"end"|"real"|"while"|"not"|"do"|"procedure"|"boolean"|"begin"]*/
+/*PalavraChave = ["program"|"var"|"integer"|"if"|"then"|"else"|"end"|"real"|"while"|"not"|"do"|"procedure"|"boolean"|"begin"|"integer"|"boolean"|"real"]*/
 Identificador = [:jletter:][:jletterdigit:]*
 NumInteiro = [0-9]+
 NumReal = [0-9]+ \. [0-9]*

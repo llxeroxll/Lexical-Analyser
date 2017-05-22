@@ -1,4 +1,8 @@
+package Lexical;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LexicalTable {
@@ -23,12 +27,30 @@ public class LexicalTable {
 				saida.write(token.getToken() + "\n");
 			}
 		    
+		    saida.close();
 		} catch (Exception e){
 		    System.out.println("Problemas no arquivo de saida.\n");
 		}
 
 		
 	
+	}
+	
+	public void readTable(String path) {
+		try {
+			FileReader fileReader = new FileReader(path);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			String[] token;
+			String line = bufferedReader.readLine();
+			while(line != null){
+				token = line.split("\t");
+				table.add(new Token(token[1], token[3], Integer.parseInt(token[5])));
+				line = bufferedReader.readLine(); 
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void printTable(){
